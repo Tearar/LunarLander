@@ -13,6 +13,7 @@ namespace LunarLander_picture
     {
         int x = 325;
         int y = 100;
+        int speed = 0;
        
         Bitmap _bmp;
      
@@ -40,19 +41,25 @@ namespace LunarLander_picture
 
         public void MoveLander(int landerState)
         {
-            //y = y + 1;
+            
             switch(landerState)
             {
                 case (int)LanderState.Off:
                     _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
+                    speed += 1;
+                    y = y + speed;
                     break;
 
                 case (int)LanderState.Up:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_up, 50, 50);
+                    speed--;
+                    y = y + speed;
                     break;
 
                 case (int)LanderState.Down:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_down, 50, 50);
+                    speed = speed + 2;
+                    y = y + speed;
                     break;
 
                 default:

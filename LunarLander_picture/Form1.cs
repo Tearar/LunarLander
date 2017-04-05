@@ -17,7 +17,9 @@ namespace LunarLander_picture
         
         Game _game;
         Graphics gfx;
-        bool test = true;
+        public bool test = true;
+        int landerState = (int)LanderState.Off;
+        SoundPlayer engines = new SoundPlayer(Properties.Resources.engines);
         public Form1()
         {
             this.KeyPreview = true;
@@ -43,25 +45,40 @@ namespace LunarLander_picture
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (test)
-            {
-                _game.Move();
-            }
-             _game.Draw(Graphics.FromImage(pictureBox1.Image));
-            
+           
+            _game.Move();
+            _game.MoveLander(landerState);
+            _game.Draw(Graphics.FromImage(pictureBox1.Image));
             this.Refresh();
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.G)
-                test = false;
+
+            if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
+            {
+                landerState = (int)LanderState.Up;
+                engines.PlayLooping();
+
+            }
+
+            if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
+            {
+                landerState = (int)LanderState.Down;
+                engines.PlayLooping();
+
+            }
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.G)
-                test = true;
+            if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up || e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
+            {
+                landerState = (int)LanderState.Off;
+                engines.Stop();
+            }
+                
         }
 
     

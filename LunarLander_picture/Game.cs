@@ -15,6 +15,8 @@ namespace LunarLander_picture
         Background _background;
         Satellite _satellite;
         Lander _lander;
+        
+        
 
         public Game(Graphics g)
         {
@@ -39,6 +41,8 @@ namespace LunarLander_picture
             }
         }
 
+    
+
         public void Draw(Graphics gfx)
         {
             
@@ -48,9 +52,17 @@ namespace LunarLander_picture
             }
         }
 
-        public void handleLanderUp(Graphics gfx)
+
+        /*public void handleLanderUp(Graphics gfx)
         {
             _lander.up(gfx);
+        }*/
+
+      
+
+      public void MoveLander(int landerState)
+        {
+            _lander.MoveLander(landerState);
         }
     }
 }

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace LunarLander_picture
 {
@@ -11,28 +13,58 @@ namespace LunarLander_picture
     {
         int x = 325;
         int y = 100;
+       
+        Bitmap _bmp;
+     
+       
+      
+        
+        
+
         public Lander()
         {
-
+             _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
         }
 
         public override void Draw(Graphics gfx)
         {
-            Bitmap _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
+           
             gfx.DrawImage(_bmp, x, y);
            
         }
 
         public override void Move(Graphics gfx)
         {
-
-             y += 1;
-           
+        
         }
 
-        public void up(Graphics gfx)
+        public void MoveLander(int landerState)
         {
-            y = y - 1;
+            //y = y + 1;
+            switch(landerState)
+            {
+                case (int)LanderState.Off:
+                    _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
+                    break;
+
+                case (int)LanderState.Up:
+                    _bmp = new Bitmap(Properties.Resources.philae_moving_up, 50, 50);
+                    break;
+
+                case (int)LanderState.Down:
+                    _bmp = new Bitmap(Properties.Resources.philae_moving_down, 50, 50);
+                    break;
+
+                default:
+                    break;
+
+            }
         }
+
+        
+
+    
+        
+      
     }
 }

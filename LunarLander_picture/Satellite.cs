@@ -15,12 +15,12 @@ namespace LunarLander_picture
         double degrees = 0;
         public Satellite() {
 
-           _bmp = new Bitmap(Properties.Resources.rosetta, 100, 50);
+           _bmp = new Bitmap(Properties.Resources.rosetta, 120, 60);
         }
 
         float angle = 0;
         float centerX = 300;
-        float centerY = 300;
+        float centerY = 410;
 
 
         public override void Draw(Graphics gfx)

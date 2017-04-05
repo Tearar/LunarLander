@@ -26,7 +26,7 @@ namespace LunarLander_picture
             Bitmap _bmp = new Bitmap(Properties.Resources.planet,200,200);
             //var save = gfx.Save();
            // gfx.RotateTransform(angle++);
-            gfx.DrawImage(_bmp, 300,300);
+            gfx.DrawImage(_bmp, 300,500);
            // gfx.Restore(save);
         }
     }

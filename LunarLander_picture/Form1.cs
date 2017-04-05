@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Media;
+using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
+
 
 namespace LunarLander_picture
 {
@@ -20,23 +25,36 @@ namespace LunarLander_picture
         public bool test = true;
         int landerState = (int)LanderState.Off;
         SoundPlayer engines = new SoundPlayer(Properties.Resources.engines);
+   
+
+
+
+
+
+
+
+
         public Form1()
         {
             this.KeyPreview = true;
             InitializeComponent();
-           
             DoubleBuffered = true;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             gfx = Graphics.FromImage(pictureBox1.Image);
-           // _background = new Background(pictureBox1);
             _game = new Game(gfx);
 
 
+
+            
+            
+           
             timer1.Interval = 20;
             timer1.Start();
             
             
         }
+
+       
 
         void pictureBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -81,7 +99,12 @@ namespace LunarLander_picture
                 
         }
 
-    
+        private void Form1Load(object sender, EventArgs e)
+        {
+          
+        }
+
+      
     }
 
 }

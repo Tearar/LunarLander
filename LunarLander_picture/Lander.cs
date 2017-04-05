@@ -11,9 +11,9 @@ namespace LunarLander_picture
 {
     class Lander : GameObject
     {
-        int x = 325;
-        int y = 100;
-        int speed = 0;
+        int x = 370;
+        double y = 0;
+        double speed { get; set; }
        
         Bitmap _bmp;
      
@@ -25,12 +25,13 @@ namespace LunarLander_picture
         public Lander()
         {
              _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
+            speed = 0;
         }
 
         public override void Draw(Graphics gfx)
         {
            
-            gfx.DrawImage(_bmp, x, y);
+            gfx.DrawImage(_bmp, x, (float)y);
            
         }
 
@@ -46,19 +47,25 @@ namespace LunarLander_picture
             {
                 case (int)LanderState.Off:
                     _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
-                    speed += 1;
+                    if (speed <= 25)
+                    {
+                        speed += 0.2;
+                    }
                     y = y + speed;
                     break;
 
                 case (int)LanderState.Up:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_up, 50, 50);
-                    speed--;
+                    if (speed >= -25)
+                    {
+                        speed -= 0.2;
+                    }
                     y = y + speed;
                     break;
 
                 case (int)LanderState.Down:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_down, 50, 50);
-                    speed = speed + 2;
+                    speed = speed + 0.5;
                     y = y + speed;
                     break;
 

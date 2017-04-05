@@ -20,14 +20,35 @@ namespace LunarLander_picture
         public override void Draw(Graphics gfx)
         {
             displaySpeed(gfx);
+            displayFuel(gfx);
             
+        }
+
+        private void displayFuel(Graphics gfx)
+        {
+            Rectangle[] fuelArray = new Rectangle[10];
+            Pen pen = new Pen(Color.Black, 3);
+
+            for(int i = 0; i < 10; i++)
+            {
+                Rectangle fuel = new Rectangle(725, 25+i*30, 50, 25 );
+                
+                gfx.DrawRectangle(pen, fuel);
+                SolidBrush blueBrush = new SolidBrush(Color.Green);
+                gfx.FillRectangle(blueBrush, fuel);
+
+            }
+
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
+            Font _font = new Font("Stencil", 15, FontStyle.Italic);
+            TextRenderer.DrawText(gfx, "Fuel", _font, new Rectangle(720, 0, 200, 200), SystemColors.ControlLight, flags);
         }
 
         private void displaySpeed(Graphics gfx)
         {
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
-            Font _font = new Font("Stencil", 15, FontStyle.Regular);
-            TextRenderer.DrawText(gfx, "Speed: " + (10 * _lander.speed).ToString(), _font, new Rectangle(0, 0, 120, 100), SystemColors.ControlLight, flags);
+            Font _font = new Font("Stencil", 15, FontStyle.Italic);
+            TextRenderer.DrawText(gfx, "Speed: " + Math.Abs((100*_lander.speed)) + " KM/H", _font, new Rectangle(0, 0,200, 200), SystemColors.ControlLight, flags);
         }
     }
 }

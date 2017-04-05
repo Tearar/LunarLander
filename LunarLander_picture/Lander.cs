@@ -14,6 +14,7 @@ namespace LunarLander_picture
         int x = 370;
         double y = 0;
         public double speed;
+        private const double maxSpeed = 10;
        
         Bitmap _bmp;
      
@@ -49,25 +50,41 @@ namespace LunarLander_picture
             {
                 case (int)LanderState.Off:
                     _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
-                    if (speed <= 25)
+                    if (speed <= maxSpeed)
                     {
                         speed += 0.2;
+                    }
+                    else
+                    {
+                        speed = maxSpeed;
                     }
                     y = y + speed;
                     break;
 
                 case (int)LanderState.Up:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_up, 50, 50);
-                    if (speed >= -25)
+                    if (speed >= -maxSpeed)
                     {
                         speed -= 0.2;
+                    }
+                    else
+                    {
+                        speed = -maxSpeed;
                     }
                     y = y + speed;
                     break;
 
                 case (int)LanderState.Down:
                     _bmp = new Bitmap(Properties.Resources.philae_moving_down, 50, 50);
-                    speed = speed + 0.5;
+                    if (speed <= maxSpeed)
+                    {
+                        speed = speed + 0.5;
+                    }
+                    else
+                    {
+                        speed = maxSpeed;
+                    }
+                    
                     y = y + speed;
                     break;
 

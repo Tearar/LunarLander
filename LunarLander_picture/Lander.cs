@@ -13,7 +13,7 @@ namespace LunarLander_picture
     {
         int x = 370;
         double y = 0;
-        double speed { get; set; }
+        public double speed;
        
         Bitmap _bmp;
      
@@ -27,6 +27,8 @@ namespace LunarLander_picture
              _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
             speed = 0;
         }
+
+ 
 
         public override void Draw(Graphics gfx)
         {
@@ -68,6 +70,8 @@ namespace LunarLander_picture
                     speed = speed + 0.5;
                     y = y + speed;
                     break;
+
+                
 
                 default:
                     break;

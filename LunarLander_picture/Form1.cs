@@ -87,6 +87,8 @@ namespace LunarLander_picture
 
             }
 
+           
+
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -104,7 +106,7 @@ namespace LunarLander_picture
           
         }
 
-      
+     
     }
 
 }

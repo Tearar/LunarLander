@@ -15,6 +15,7 @@ namespace LunarLander_picture
         Background _background;
         Satellite _satellite;
         Lander _lander;
+        HUD _hud;
         
         
 
@@ -25,11 +26,13 @@ namespace LunarLander_picture
             _planet = new Planet();
             _satellite = new Satellite();
             _lander = new Lander();
+            _hud = new HUD(_lander);
             allObjects.Add(_background);
             allObjects.Add(_planet);
             //allObjects.Add(_lander);
             allObjects.Add(_satellite);
             allObjects.Add(_lander);
+            allObjects.Add(_hud);
 
         }
 

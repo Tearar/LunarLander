@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Game.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="HUD.cs" />
     <Compile Include="Lander.cs" />
     <Compile Include="LanderState.cs" />
     <Compile Include="Planet.cs" />

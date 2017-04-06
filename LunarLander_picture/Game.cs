@@ -68,6 +68,14 @@ namespace LunarLander_picture
             _lander.MoveLander(landerState);
         }
 
+        internal void checkForGameState()
+        {
+           if(_lander.Y == _planet.Y)
+            {
+
+            }
+        }
+
         public void handleHUD(int fuel)
         {
             _hud.handleFuel(fuel);

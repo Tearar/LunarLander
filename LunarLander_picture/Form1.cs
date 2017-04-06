@@ -77,16 +77,29 @@ namespace LunarLander_picture
 
             if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
             {
-                landerState = (int)LanderState.Up;
-                fuel--;
-                engines.PlayLooping();
+               
+                if (fuel > 0)
+                {
+                    landerState = (int)LanderState.Up;
+                    fuel--;
+                    engines.PlayLooping();
+                }
+              
+                
+
+         
+
 
             }
 
             if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
             {
-                landerState = (int)LanderState.Down;
-                engines.PlayLooping();
+                if (fuel != 0)
+                {
+                    landerState = (int)LanderState.Down;
+                    fuel--;
+                    engines.PlayLooping();
+                }
 
             }
 

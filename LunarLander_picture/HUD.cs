@@ -12,6 +12,7 @@ namespace LunarLander_picture
     {
         Lander _lander;
         int numberOfRectangles;
+        SolidBrush brush;
 
         public HUD(Lander _lander)
         {
@@ -29,16 +30,16 @@ namespace LunarLander_picture
         {
           //  Rectangle[] fuelArray = new Rectangle[10];
             Pen pen = new Pen(Color.Black, 3);
-            SolidBrush brush;
+            
 
             for (int i = 0; i < numberOfRectangles; i++)
             {
                 Rectangle fuel = new Rectangle(725, 25+i*30, 50, 25 );
-                if (i <= 3)
+                if (i < 3)
                 {
                     brush = new SolidBrush(Color.DarkRed);
                 }
-                else if(i >= 4 && i <= 5)
+                else if(i >= 3 && i <= 4)
                 {
                     brush = new SolidBrush(Color.DarkOrange);
                 }

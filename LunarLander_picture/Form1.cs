@@ -24,6 +24,7 @@ namespace LunarLander_picture
         Graphics gfx;
         public bool test = true;
         int landerState = (int)LanderState.Off;
+        int fuel = 100;
         SoundPlayer engines = new SoundPlayer(Properties.Resources.engines);
    
 
@@ -66,6 +67,7 @@ namespace LunarLander_picture
            
             _game.Move();
             _game.MoveLander(landerState);
+            _game.handleHUD(fuel);
             _game.Draw(Graphics.FromImage(pictureBox1.Image));
             this.Refresh();
         }
@@ -76,6 +78,7 @@ namespace LunarLander_picture
             if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
             {
                 landerState = (int)LanderState.Up;
+                fuel--;
                 engines.PlayLooping();
 
             }

@@ -67,5 +67,10 @@ namespace LunarLander_picture
         {
             _lander.MoveLander(landerState);
         }
+
+        public void handleHUD(int fuel)
+        {
+            _hud.handleFuel(fuel);
+        }
     }
 }

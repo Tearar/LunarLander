@@ -24,7 +24,7 @@ namespace LunarLander_picture
             base.Move(gfx);
         }
 
-        int angle = 0;
+      
         public override void Draw(Graphics gfx)
         {
             Bitmap _bmp = new Bitmap(Properties.Resources.planet,x,y);

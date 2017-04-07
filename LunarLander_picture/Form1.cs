@@ -21,9 +21,11 @@ namespace LunarLander_picture
         //Background _background;
         
         Game _game;
+     
         Graphics gfx;
         public bool test = true;
         int landerState = (int)LanderState.Off;
+        int gameState = (int)GameState.Running;
         int fuel = 100;
         SoundPlayer engines = new SoundPlayer(Properties.Resources.engines);
    
@@ -43,32 +45,36 @@ namespace LunarLander_picture
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             gfx = Graphics.FromImage(pictureBox1.Image);
             _game = new Game(gfx);
-
-
-
-            
-            
-           
+          
             timer1.Interval = 20;
-            timer1.Start();
-            
-            
+            timer1.Start();   
         }
 
        
 
-        void pictureBox1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
+        void pictureBox1_KeyPress(object sender, KeyPressEventArgs e){ }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
-            _game.Move();
-            _game.MoveLander(landerState);
-            _game.handleHUD(fuel);
-            _game.Draw(Graphics.FromImage(pictureBox1.Image));
+           switch(gameState)
+            {
+                case (int)GameState.Running:
+                    _game.Move();
+                    _game.MoveLander(landerState);
+                    _game.handleHUD(fuel);
+                    gameState = _game.checkForGameState();
+                    _game.Draw(Graphics.FromImage(pictureBox1.Image));
+                    break;
+                case (int)GameState.Won:
+                    pictureBox1.Image = Properties.Resources.game_won;
+                    break;
+                case (int)GameState.Lost:
+                    pictureBox1.Image = Properties.Resources.game_lost;
+                    break;
+                default:
+                    break;
+            }
+            
             this.Refresh();
         }
 
@@ -78,7 +84,7 @@ namespace LunarLander_picture
             if (e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
             {
                
-                if (fuel > 0)
+                if (fuel > 0 && gameState == (int)GameState.Running)
                 {
                     landerState = (int)LanderState.Up;
                     fuel--;
@@ -94,7 +100,7 @@ namespace LunarLander_picture
 
             if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
             {
-                if (fuel != 0)
+                if (fuel != 0 && gameState == (int)GameState.Running)
                 {
                     landerState = (int)LanderState.Down;
                     fuel--;

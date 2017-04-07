@@ -68,11 +68,19 @@ namespace LunarLander_picture
             _lander.MoveLander(landerState);
         }
 
-        internal void checkForGameState()
+       public int checkForGameState()
         {
-           if(_lander.Y == _planet.Y)
+           if(_lander.Y >= (_planet.Y + 300) && _lander.speed < 5)
             {
-
+                return (int)GameState.Won;
+            }
+           else if(_lander.Y >= (_planet.Y + 300) && _lander.speed >= 5)
+            {
+                return (int)GameState.Lost;
+            }
+           else
+            {
+                return (int)GameState.Running;
             }
         }
 

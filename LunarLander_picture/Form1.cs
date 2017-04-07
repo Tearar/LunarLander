@@ -70,6 +70,7 @@ namespace LunarLander_picture
                     break;
                 case (int)GameState.Lost:
                     pictureBox1.Image = Properties.Resources.game_lost;
+                    //Application.Restart();
                     break;
                 default:
                     break;
@@ -98,6 +99,11 @@ namespace LunarLander_picture
 
             }
 
+            if(e.KeyCode ==  Keys.Enter )
+            {
+                restartGame();
+            }
+
             if (e.KeyCode == Keys.S || e.KeyCode == Keys.Down)
             {
                 if (fuel != 0 && gameState == (int)GameState.Running)
@@ -111,6 +117,13 @@ namespace LunarLander_picture
 
            
 
+        }
+
+        private void restartGame()
+        {
+           
+                Application.Restart();
+            
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -130,5 +143,7 @@ namespace LunarLander_picture
 
      
     }
+
+   
 
 }

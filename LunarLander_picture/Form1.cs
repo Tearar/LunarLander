@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Media;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WMPLib;
 
 
 namespace LunarLander_picture
@@ -114,8 +104,9 @@ namespace LunarLander_picture
                 }
             }
 
-            if(e.KeyCode ==  Keys.Enter )
+            if(e.KeyCode ==  Keys.Enter && gameState != (int)GameState.Running )
             {
+
                 restartGame();
             }
 

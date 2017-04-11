@@ -49,6 +49,12 @@ namespace LunarLander_picture
              
         }
 
+        public double X
+        {
+            get { return x; }
+
+        }
+
         public void MoveLander(int landerState)
         {
             

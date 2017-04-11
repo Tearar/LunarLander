@@ -24,6 +24,7 @@ namespace LunarLander_picture
      
         Graphics gfx;
         public bool test = true;
+        bool run = true;
         int landerState = (int)LanderState.Off;
         int gameState = (int)GameState.Running;
         int fuel = 100;
@@ -56,21 +57,39 @@ namespace LunarLander_picture
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+         
            switch(gameState)
             {
                 case (int)GameState.Running:
                     _game.Move();
                     _game.MoveLander(landerState);
                     _game.handleHUD(fuel);
+                   
                     gameState = _game.checkForGameState();
                     _game.Draw(Graphics.FromImage(pictureBox1.Image));
                     break;
                 case (int)GameState.Won:
                     pictureBox1.Image = Properties.Resources.game_won;
                     break;
-                case (int)GameState.Lost:
+                case (int)GameState.CollidedWithPlanet:
                     pictureBox1.Image = Properties.Resources.game_lost;
-                    //Application.Restart();
+                    break;
+                case (int)GameState.CollidedWithSatellite:
+                    pictureBox1.Image = Properties.Resources.explosion_resized;
+                    Font _font = new Font("Stencil", 30, FontStyle.Italic);
+                    Font _font1 = new Font("Stencil", 20, FontStyle.Italic);
+
+                    using (Graphics g = Graphics.FromImage(pictureBox1.Image))
+                    {
+                        g.DrawString("Game Over !", _font, Brushes.Black, 275, 375); // requires font, brush etc
+                    }
+
+                    using (Graphics g = Graphics.FromImage(pictureBox1.Image))
+                    {
+                        g.DrawString("Press Enter to restart the game !", _font1, Brushes.Black, 150, 450); // requires font, brush etc
+                    }
+
+
                     break;
                 default:
                     break;
@@ -78,6 +97,8 @@ namespace LunarLander_picture
             
             this.Refresh();
         }
+
+     
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -91,12 +112,6 @@ namespace LunarLander_picture
                     fuel--;
                     engines.PlayLooping();
                 }
-              
-                
-
-         
-
-
             }
 
             if(e.KeyCode ==  Keys.Enter )
@@ -114,6 +129,8 @@ namespace LunarLander_picture
                 }
 
             }
+
+        
 
            
 

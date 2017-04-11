@@ -10,6 +10,7 @@ namespace LunarLander_picture
     {
         Running, 
         Won,
-        Lost
+        CollidedWithPlanet,
+        CollidedWithSatellite
     }
 }

@@ -44,5 +44,15 @@ namespace LunarLander_picture
             degrees = degrees +0.03;
 
         }
+
+        public double X
+        {
+            get { return x; }
+        }
+
+        public double Y
+        {
+            get { return y; }
+        }
     }
 }

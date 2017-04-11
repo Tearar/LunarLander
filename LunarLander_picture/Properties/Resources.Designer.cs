@@ -81,6 +81,16 @@ namespace LunarLander_picture.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap explosion_resized {
+            get {
+                object obj = ResourceManager.GetObject("explosion_resized", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap game_lost {
             get {
                 object obj = ResourceManager.GetObject("game_lost", resourceCulture);

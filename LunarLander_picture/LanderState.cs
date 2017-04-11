@@ -10,8 +10,7 @@ namespace LunarLander_picture
     {
         Off,
         Up,
-        Down,
-        Right,
-        Left
+        Down
+       
     }
 }

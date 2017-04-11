@@ -76,13 +76,19 @@ namespace LunarLander_picture
             }
            else if(_lander.Y >= (_planet.Y + 300) && _lander.speed >= 5)
             {
-                return (int)GameState.Lost;
+                return (int)GameState.CollidedWithPlanet;
+            }
+           else if(((_lander.Y >= _satellite.Y) && (_lander.Y <= _satellite.Y +60)) && (_lander.X >= _satellite.X) && (_lander.X <= _satellite.X+120))
+            {
+                return (int)GameState.CollidedWithSatellite;
             }
            else
             {
                 return (int)GameState.Running;
             }
         }
+
+     
 
         public void handleHUD(int fuel)
         {

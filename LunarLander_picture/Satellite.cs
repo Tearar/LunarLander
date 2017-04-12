@@ -1,48 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LunarLander_picture
 {
     class Satellite : GameObject
     {
+        /*initialize class variables */
         Bitmap _bmp;
         double x = 300;
         double y = 100;
         double degrees = 0;
-        public Satellite() {
-
-           _bmp = new Bitmap(Properties.Resources.rosetta, 120, 60);
-        }
-
-        float angle = 0;
+        const double increment = 0.03;
         float centerX = 300;
         float centerY = 410;
 
-
-        public override void Draw(Graphics gfx)
+        /* public constructor */
+        public Satellite()
         {
-            
-             
-            gfx.DrawImage(_bmp, (float)x, (float)y);
-            
+           _bmp = new Bitmap(Properties.Resources.rosetta, GameConfig.SATELLITE_WIDTH, GameConfig.SATELLITE_HEIGHT);
         }
 
+        /* draws the satellite */
+        public override void Draw(Graphics gfx)
+        {
+            gfx.DrawImage(_bmp, (float)x, (float)y); 
+        }
+
+        /* moves the satellite around in a circle */
         public override void Move(Graphics gfx)
         {
             var save = gfx.Save();
             gfx.TranslateTransform(centerX, centerY);
-            // gfx.RotateTransform(angle++);
-            // gfx.TranslateTransform(centerX, centerY);
-            // gfx.Restore(save);
-
-            x = centerX + Math.Cos(degrees) * 300;
-            y = centerY + Math.Sin(degrees) * 300;
-            degrees = degrees +0.03;
-
+            x = centerX + Math.Cos(degrees) * GameConfig.SATELLITE_R;
+            y = centerY + Math.Sin(degrees) * GameConfig.SATELLITE_R;
+            degrees = degrees + increment;
         }
 
         public double X

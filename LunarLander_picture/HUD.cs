@@ -54,7 +54,7 @@ namespace LunarLander_picture
         {
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
             Font _font = new Font(GameConfig.FONT, GameConfig.HUDFONTSIZE, FontStyle.Italic);
-            TextRenderer.DrawText(gfx, GameConfig.FUEL, _font, new Rectangle(720, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
+            TextRenderer.DrawText(gfx, GameConfig.FUEL, _font, new Rectangle(GameConfig.FUELLABEL_X, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
         }
 
         /* draws the speed label */

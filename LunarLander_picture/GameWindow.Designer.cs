@@ -1,6 +1,6 @@
 ﻿namespace LunarLander_picture
 {
-    partial class Form1
+    partial class GameWindow
     {
         /// <summary>
         /// Erforderliche Designervariable.

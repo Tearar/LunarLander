@@ -75,6 +75,7 @@
             this.Name = "StartingWindow";
             this.Text = "Lunar Lander";
             this.Load += new System.EventHandler(this.StartingWindow_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StartingWindow_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

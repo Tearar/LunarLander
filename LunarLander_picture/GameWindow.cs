@@ -6,12 +6,12 @@ using System.Windows.Forms;
 
 namespace LunarLander_picture
 {
-    public partial class Form1 : Form
+    public partial class GameWindow : Form
     {
         //Background _background;
         
         Game _game;
-     
+        int difficulty;
         Graphics gfx;
         public bool test = true;
         bool run = true;
@@ -28,14 +28,15 @@ namespace LunarLander_picture
 
 
 
-        public Form1()
+        public GameWindow(int difficulty)
         {
             this.KeyPreview = true;
+            this.difficulty = difficulty;
             InitializeComponent();
             DoubleBuffered = true;
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             gfx = Graphics.FromImage(pictureBox1.Image);
-            _game = new Game(gfx);
+            _game = new Game(gfx, difficulty);
           
             timer1.Interval = 20;
             timer1.Start();   
@@ -104,6 +105,11 @@ namespace LunarLander_picture
                 }
             }
 
+            if(e.KeyCode == Keys.Escape)
+            {
+                Application.Exit();
+            }
+
             if(e.KeyCode ==  Keys.Enter && gameState != (int)GameState.Running )
             {
 
@@ -129,7 +135,7 @@ namespace LunarLander_picture
 
         private void restartGame()
         {
-           
+                Application.Exit();
                 Application.Restart();
             
         }

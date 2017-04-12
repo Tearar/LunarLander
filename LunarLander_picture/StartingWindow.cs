@@ -18,6 +18,7 @@ namespace LunarLander_picture
         public StartingWindow()
         {
             InitializeComponent();
+            KeyPreview = true;
             pictureBox1.Image = Properties.Resources.stars;
             comboBox1.Items.Add("Easy");
             comboBox1.Items.Add("Medium");
@@ -55,8 +56,14 @@ namespace LunarLander_picture
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Form1 frm = new Form1();
+            GameWindow frm = new GameWindow(comboBox1.SelectedIndex);
             frm.Show();
+        }
+
+        private void StartingWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                Application.Exit();
         }
     }
 }

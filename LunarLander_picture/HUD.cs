@@ -13,10 +13,12 @@ namespace LunarLander_picture
         Lander _lander;
         int numberOfRectangles;
         SolidBrush brush;
+        int difficulty;
 
         public HUD(Lander _lander)
         {
             this._lander = _lander;
+           
         }
 
         public override void Draw(Graphics gfx)

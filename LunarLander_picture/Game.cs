@@ -16,12 +16,16 @@ namespace LunarLander_picture
         Satellite _satellite;
         Lander _lander;
         HUD _hud;
+        int difficulty;
+        int landerAbsSpeed;
         
         
 
-        public Game(Graphics g)
+        public Game(Graphics g, int difficulty)
         {
             this.g = g;
+            this.difficulty = difficulty;
+            handleDifficulty();
             _background = new Background();
             _planet = new Planet();
             _satellite = new Satellite();
@@ -34,6 +38,24 @@ namespace LunarLander_picture
             allObjects.Add(_lander);
             allObjects.Add(_hud);
 
+        }
+
+        private void handleDifficulty()
+        {
+            switch(difficulty)
+            {
+                case 0:
+                    landerAbsSpeed = 5;
+                    break;
+                case 1:
+                    landerAbsSpeed = 3;
+                    break;
+                case 2:
+                    landerAbsSpeed = 1;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void Move()
@@ -70,11 +92,11 @@ namespace LunarLander_picture
 
        public int checkForGameState()
         {
-           if(_lander.Y >= (_planet.Y + 300) && _lander.speed < 5)
+           if(_lander.Y >= (_planet.Y + 300) && _lander.speed < landerAbsSpeed)
             {
                 return (int)GameState.Won;
             }
-           else if(_lander.Y >= (_planet.Y + 300) && _lander.speed >= 5)
+           else if(_lander.Y >= (_planet.Y + 300) && _lander.speed >= landerAbsSpeed)
             {
                 return (int)GameState.CollidedWithPlanet;
             }

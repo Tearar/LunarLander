@@ -1,37 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Drawing;
 
 namespace LunarLander_picture
 {
     class Planet : GameObject
     {
+        /*initialize class variables */
         int x = 200;
         int y = 200;
 
-
-        public Planet()
-        {
-            
-        }
-
+        /* public constructor */ 
+        public Planet() { }
+ 
         public override void Move(Graphics gfx)
         {
             base.Move(gfx);
         }
 
-      
+        /* draws the planet */
         public override void Draw(Graphics gfx)
         {
-            Bitmap _bmp = new Bitmap(Properties.Resources.planet,x,y);
-            //var save = gfx.Save();
-           // gfx.RotateTransform(angle++);
-            gfx.DrawImage(_bmp, 300,500);
-           // gfx.Restore(save);
+            Bitmap _bmp = new Bitmap(Properties.Resources.planet, x, y);
+            gfx.DrawImage(_bmp, GameConfig.PLANET_X, GameConfig.PLANET_Y);
         }
 
         public int X

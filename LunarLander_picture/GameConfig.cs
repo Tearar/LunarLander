@@ -42,6 +42,8 @@ namespace LunarLander_picture
 
         /* Planet.cs constants */
         public const int PLANET_DISTANCE = 300;
+        public const int PLANET_X = 300;
+        public const int PLANET_Y = 500;
 
         /* Satellite.cs constants*/
         public const int SATELLITE_HEIGHT = 60;

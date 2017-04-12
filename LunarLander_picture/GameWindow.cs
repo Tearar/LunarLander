@@ -107,7 +107,8 @@ namespace LunarLander_picture
 
             if(e.KeyCode == Keys.Escape)
             {
-                Application.Exit();
+                Application.ExitThread();
+                Environment.Exit(0);
             }
 
             if(e.KeyCode ==  Keys.Enter && gameState != (int)GameState.Running )
@@ -135,8 +136,8 @@ namespace LunarLander_picture
 
         private void restartGame()
         {
-                Application.Exit();
-                Application.Restart();
+            Application.ExitThread();
+            Application.Restart();
             
         }
 

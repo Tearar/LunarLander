@@ -63,7 +63,12 @@ namespace LunarLander_picture
         private void StartingWindow_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
-                Application.Exit();
+            {
+                Application.ExitThread();
+                Environment.Exit(0);
+            }
+
+
         }
     }
 }

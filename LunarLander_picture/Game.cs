@@ -98,11 +98,11 @@ namespace LunarLander_picture
         */
        public int checkForGameState()
         {
-           if(_lander.Y >= (_planet.Y + GameConfig.PLANET_DISTANCE) && _lander.speed < landerAbsSpeed)
+           if(_lander.Y >= (_planet.Y + GameConfig.PLANET_DISTANCE) && _lander.Speed < landerAbsSpeed)
             {
                 return (int)GameState.Won;
             }
-           else if(_lander.Y >= (_planet.Y + GameConfig.PLANET_DISTANCE) && _lander.speed >= landerAbsSpeed)
+           else if(_lander.Y >= (_planet.Y + GameConfig.PLANET_DISTANCE) && _lander.Speed >= landerAbsSpeed)
             {
                 return (int)GameState.CollidedWithPlanet;
             }

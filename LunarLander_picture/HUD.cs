@@ -62,7 +62,7 @@ namespace LunarLander_picture
         {
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
             Font _font = new Font(GameConfig.FONT, GameConfig.HUDFONTSIZE, FontStyle.Italic);
-            TextRenderer.DrawText(gfx, GameConfig.SPEED + Math.Abs((100 * _lander.speed)).ToString() + GameConfig.SPEEDUNIT, _font, new Rectangle(GameConfig.ZERO, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
+            TextRenderer.DrawText(gfx, GameConfig.SPEED + Math.Abs((100 * _lander.Speed)).ToString() + GameConfig.SPEEDUNIT, _font, new Rectangle(GameConfig.ZERO, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
         }
 
         /*handles the fuel variable. there is way to much fuel in the release version to test the game. */

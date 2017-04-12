@@ -48,7 +48,7 @@ namespace LunarLander_picture
         public const int SATELLITE_WIDTH = 120;
         public const int SATELLITE_R = 300;
 
-        /* HUD.cs connstants */
+        /* HUD.cs constants */
         public const String FUEL = "Fuel";
         public const String SPEED = "Speed: ";
         public const String SPEEDUNIT = " KM/H";
@@ -58,6 +58,15 @@ namespace LunarLander_picture
         public const int FUELREC_HEIGHT = 25;
         public const int LABELREC = 200;
         public const int HUDFONTSIZE = 15;
+
+        /* Lander.cs constants*/
+        public const int LANDER_HEIGHT = 50;
+        public const int LANDER_WIDTH = 50;
+        public const double SPEEDCHANGE_SLOW = 0.2;
+        public const double SPEEDCHANGE_FAST = 0.5;
+        public const int MAXSPEED = 10;
+
+
 
 
 

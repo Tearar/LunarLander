@@ -1,117 +1,97 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using System.Drawing;
 
 namespace LunarLander_picture
 {
     class Lander : GameObject
     {
+        /* initialize class variables */
         int x = 370;
         double y = 0;
-        public double speed;
-        private const double maxSpeed = 10;
-       
+        double speed;
         Bitmap _bmp;
-     
-       
-      
-        
-        
 
+        /* public constructor */
         public Lander()
         {
-             _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
-            speed = 0;
+             _bmp = new Bitmap(Properties.Resources.philae_engine_off, GameConfig.LANDER_WIDTH, GameConfig.LANDER_HEIGHT);
+            speed = GameConfig.ZERO;
         }
-
- 
-
+        
         public override void Draw(Graphics gfx)
         {
-           
             gfx.DrawImage(_bmp, x, (float)y);
-           
         }
 
-        public override void Move(Graphics gfx)
+        public override void Move(Graphics gfx) { }
+
+        public double Speed
         {
-        
+            get { return speed; }
         }
-
         public double Y
         {
-            get { return y; }
-             
+            get { return y; } 
         }
 
         public double X
         {
             get { return x; }
-
         }
 
+        /* moves lander according to landerState and changes its speed. */
         public void MoveLander(int landerState)
         {
             
             switch(landerState)
             {
                 case (int)LanderState.Off:
-                    _bmp = new Bitmap(Properties.Resources.philae_engine_off, 50, 50);
-                    if (speed <= maxSpeed)
+                    _bmp = new Bitmap(Properties.Resources.philae_engine_off, GameConfig.LANDER_WIDTH, GameConfig.LANDER_HEIGHT);
+                    if (speed <= GameConfig.MAXSPEED)
                     {
-                        speed += 0.2;
+                        speed += GameConfig.SPEEDCHANGE_SLOW;
                     }
                     else
                     {
-                        speed = maxSpeed;
+                        speed = GameConfig.MAXSPEED;
                     }
-                    y = y + speed;
+                    updateSpeed();
                     break;
 
                 case (int)LanderState.Up:
-                    _bmp = new Bitmap(Properties.Resources.philae_moving_up, 50, 50);
-                    if (speed >= -maxSpeed)
+                    _bmp = new Bitmap(Properties.Resources.philae_moving_up, GameConfig.LANDER_WIDTH, GameConfig.LANDER_HEIGHT);
+                    if (speed >= -GameConfig.MAXSPEED)
                     {
-                        speed -= 0.2;
+                        speed -= GameConfig.SPEEDCHANGE_SLOW;
                     }
                     else
                     {
-                        speed = -maxSpeed;
+                        speed = -GameConfig.MAXSPEED;
                     }
-                    y = y + speed;
+                    updateSpeed();
                     break;
 
                 case (int)LanderState.Down:
-                    _bmp = new Bitmap(Properties.Resources.philae_moving_down, 50, 50);
-                    if (speed <= maxSpeed)
+                    _bmp = new Bitmap(Properties.Resources.philae_moving_down, GameConfig.LANDER_WIDTH, GameConfig.LANDER_HEIGHT);
+                    if (speed <= GameConfig.MAXSPEED)
                     {
-                        speed = speed + 0.5;
+                        speed += GameConfig.SPEEDCHANGE_FAST;
                     }
                     else
                     {
-                        speed = maxSpeed;
+                        speed = GameConfig.MAXSPEED;
                     }
-                    
-                    y = y + speed;
+                    updateSpeed();
                     break;
-
-                
 
                 default:
                     break;
-
             }
         }
 
-        
-
-    
-        
-      
+        /* updates lander position */
+        private void updateSpeed()
+        {
+            y = y + speed;
+        }
     }
 }

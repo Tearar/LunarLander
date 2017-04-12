@@ -16,6 +16,8 @@ namespace LunarLander_picture
         public const int ZERO = 0;
         public const int ONE = 1;
         public const int TWO = 2;
+        public const int THREE = 3;
+        public const int FOUR = 4;
         public const int WELCOME_FONTSIZE = 30;
         public const int RESTART_FONTSIZE = 20;
         public const int WELCOME_X = 175;
@@ -36,6 +38,15 @@ namespace LunarLander_picture
 
         public const int SATELLITE_HEIGHT = 60;
         public const int SATELLITE_WIDTH = 120;
+
+        public const String FUEL = "Fuel";
+        public const String SPEED = "Speed: ";
+        public const String SPEEDUNIT = " KM/H";
+        public const int FUEL_X = 725;
+        public const int FUELREC_WIDTH = 50;
+        public const int FUELREC_HEIGHT = 25;
+        public const int LABELREC = 200;
+        public const int HUDFONTSIZE = 15;
 
 
 

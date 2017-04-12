@@ -1,47 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LunarLander_picture
 {
     class HUD : GameObject
     {
+        /* declare class variables */
         Lander _lander;
         int numberOfRectangles;
         SolidBrush brush;
-        int difficulty;
+        Pen pen = new Pen(Color.Black, GameConfig.THREE);
 
+        /* public constructor */
         public HUD(Lander _lander)
         {
-            this._lander = _lander;
-           
+            this._lander = _lander; 
         }
 
+        /* draws the speed label and displays the current fuel level */
         public override void Draw(Graphics gfx)
         {
             displaySpeed(gfx);
-            displayFuel(gfx);
-            
+            displayFuel(gfx); 
         }
 
+        /* draws rectangles according to the current fuel state. */
         private void displayFuel(Graphics gfx)
         {
-          //  Rectangle[] fuelArray = new Rectangle[10];
-            Pen pen = new Pen(Color.Black, 3);
-            
-
             for (int i = 0; i < numberOfRectangles; i++)
             {
-                Rectangle fuel = new Rectangle(725, 25+i*30, 50, 25 );
-                if (i < 3)
+                Rectangle fuel = new Rectangle(GameConfig.FUEL_X, GameConfig.FUELREC_HEIGHT + i*30, GameConfig.FUELREC_WIDTH, GameConfig.FUELREC_HEIGHT);
+                if (i < GameConfig.THREE)
                 {
                     brush = new SolidBrush(Color.DarkRed);
                 }
-                else if(i >= 3 && i <= 4)
+                else if(i >= GameConfig.THREE && i <= GameConfig.FOUR)
                 {
                     brush = new SolidBrush(Color.DarkOrange);
                 }
@@ -51,25 +45,29 @@ namespace LunarLander_picture
                 }
                 gfx.DrawRectangle(pen, fuel);
                 gfx.FillRectangle(brush, fuel);
-
             }
-
-            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
-            Font _font = new Font("Stencil", 15, FontStyle.Italic);
-            TextRenderer.DrawText(gfx, "Fuel", _font, new Rectangle(720, 0, 200, 200), SystemColors.ControlLight, flags);
+            drawFuelLabel(gfx);
         }
 
+        /* draws fuel label. */
+        private void drawFuelLabel(Graphics gfx)
+        {
+            TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
+            Font _font = new Font(GameConfig.FONT, GameConfig.HUDFONTSIZE, FontStyle.Italic);
+            TextRenderer.DrawText(gfx, GameConfig.FUEL, _font, new Rectangle(720, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
+        }
+
+        /* draws the speed label */
         private void displaySpeed(Graphics gfx)
         {
             TextFormatFlags flags = TextFormatFlags.Left | TextFormatFlags.EndEllipsis;
-            Font _font = new Font("Stencil", 15, FontStyle.Italic);
-            TextRenderer.DrawText(gfx, "Speed: " + Math.Abs((100*_lander.speed)).ToString() + " KM/H", _font, new Rectangle(0, 0,200, 200), SystemColors.ControlLight, flags);
+            Font _font = new Font(GameConfig.FONT, GameConfig.HUDFONTSIZE, FontStyle.Italic);
+            TextRenderer.DrawText(gfx, GameConfig.SPEED + Math.Abs((100 * _lander.speed)).ToString() + GameConfig.SPEEDUNIT, _font, new Rectangle(GameConfig.ZERO, GameConfig.ZERO, GameConfig.LABELREC, GameConfig.LABELREC), SystemColors.ControlLight, flags);
         }
 
+        /*handles the fuel variable. there is way to much fuel in the release version to test the game. */
         public void handleFuel(int fuel)
         {
-            
-
             if(fuel <= 100 && fuel > 90)
             {
                 numberOfRectangles = 10;
@@ -112,10 +110,8 @@ namespace LunarLander_picture
             }
             else
             {
-                numberOfRectangles = 0;
+                numberOfRectangles = GameConfig.ZERO;
             }
         }
-
-     
     }
 }
